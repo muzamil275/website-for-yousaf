@@ -1,26 +1,71 @@
 # Yousaf Journal
 
-A professional, responsive, frontend-only long-form blogging website prototype.
+**Ideas Worth Reading**
 
-## Current prototype
-- English-only editorial design
-- Light/dark theme toggle
-- Responsive desktop/tablet/mobile layout
-- Home, Articles, Article Reading, About and Contact views
-- Reading progress bar on article pages
-- Demo long-form articles only — no real publishing data yet
-- No Supabase, database, backend, authentication or Vercel dependency
-- Designed for ordinary static hosting and a purchased domain
-- Main website is contained in `index.html` for simple portability and one-file downloading
+A frontend-only editorial blogging website designed for long-form publishing, SEO-focused article pages and a clean reading experience.
 
-## Replacing demo posts later
-The demo posts live in the `posts` array near the bottom of `index.html`. Future posts can be added or replaced there while keeping the visual system intact.
+## What is included
 
-## Preview
-Open `index.html` directly in a browser. Hash navigation provides the complete prototype without a server.
+- English-only, single editorial experience
+- Responsive Home, Articles, Article, About and Contact pages
+- Article search and category filters
+- Individual article URLs using `?post=slug`
+- Related reading and native share/copy-link controls
+- Reading progress on article pages
+- Light/dark theme settings
+- Article text-size and reduced-motion settings
+- Local reader profile UI (frontend-only)
+- SEO metadata, canonical URL support and BlogPosting/WebSite structured data
+- `robots.txt`
+- No Supabase
+- No database
+- No backend
+- No Vercel dependency
 
-## Download
-Download the repository as a ZIP from GitHub. The site can then be opened locally or uploaded to compatible static hosting.
+## Add a new blog post
 
-## Privacy
-Keep the GitHub repository private if the code/content should not be publicly readable. Repository visibility is controlled from GitHub Settings.
+Open `posts.js` and add another object to `window.YJPosts`.
+
+Each post should include:
+
+- `id` — unique URL slug, for example `my-new-essay`
+- `title`
+- `category`
+- `date` — reader-facing date
+- `datePublished` — ISO date such as `2026-10-04`
+- `author`
+- `reading`
+- `excerpt`
+- `accent` — `purple`, `gold` or `red`
+- `body` — an array of `[heading, paragraph]` sections
+
+The archive, search, filters, article page, related links and structured data use the same post object automatically.
+
+## Publication configuration
+
+Edit `site-config.js` when the final domain is purchased:
+
+```js
+window.YJConfig = {
+  siteName: "Yousaf Journal",
+  tagline: "Ideas Worth Reading",
+  author: "Yousaf",
+  description: "Thoughtful long-form writing, ideas and stories.",
+  siteUrl: "https://your-final-domain.com",
+  defaultOgImage: ""
+};
+```
+
+Setting `siteUrl` enables the correct canonical and structured-data URLs for the publication.
+
+## Local settings
+
+`settings.js` stores reader preferences in the browser localStorage. These are device-local only and are not an authentication system.
+
+## Hosting
+
+The project remains a static website. It can be uploaded later to compatible static hosting and connected to a paid domain without introducing a database or backend.
+
+## SEO note
+
+The repository intentionally does not include a hard-coded sitemap URL because the final publication domain has not been selected yet. Once the domain is known, a sitemap can be added with the real absolute URLs.
