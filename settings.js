@@ -7,7 +7,8 @@ window.YJSettings = (() => {
     theme: "light",
     fontSize: "normal",
     reducedMotion: false,
-    readerName: ""
+    readerName: "",
+    readerEmail: ""
   };
 
   function load() {
