@@ -8,6 +8,7 @@
 <meta property="og:title" content="Yousaf Journal">
 <meta property="og:description" content="Thoughtful long-form writing, ideas and stories.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Yousaf Journal">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="author" content="Yousaf">
 <meta name="twitter:card" content="summary_large_image">
@@ -194,6 +195,8 @@ function applySeo(route,p){
   setMeta('meta[property="og:title"]',title);
   setMeta('meta[property="og:description"]',description);
   setMeta('meta[property="og:type"]',p?'article':'website');
+  setMeta('meta[property="og:site_name"]',siteName);
+  setMeta('meta[property="article:published_time"]',p?(p.datePublished||p.date):'');
   setMeta('meta[name="twitter:title"]',title);
   setMeta('meta[name="twitter:description"]',description);
   setMeta('meta[name="author"]',cfg.author||'Yousaf');
