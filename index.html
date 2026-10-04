@@ -150,7 +150,7 @@ function applySeo(route,p){
     '@type':'BlogPosting',
     headline:p.title,
     description:description,
-    datePublished:p.date,
+    datePublished:p.datePublished||p.date,
     author:{'@type':'Person',name:p.author||cfg.author||'Yousaf'},
     mainEntityOfPage:{'@type':'WebPage','@id':canonical},
     url:canonical,
