@@ -7,5 +7,6 @@ window.YJConfig = {
   author: "Yousaf",
   description: "Thoughtful long-form writing, ideas and stories.",
   siteUrl: "",
-  defaultOgImage: ""
+  defaultOgImage: "",
+  authorUrl: ""
 };
