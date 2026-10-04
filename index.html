@@ -184,7 +184,7 @@ function applySeo(route,p){
     headline:p.title,
     description:description,
     datePublished:p.datePublished||p.date,
-    author:{'@type':'Person',name:p.author||cfg.author||'Yousaf'},
+    author:{'@type':'Person',name:p.author||cfg.author||'Yousaf',url:cfg.authorUrl||undefined},
     mainEntityOfPage:{'@type':'WebPage','@id':canonical},
     url:canonical,
     publisher:{'@type':'Organization',name:siteName}
@@ -194,9 +194,9 @@ function applySeo(route,p){
     name:siteName,
     description:description,
     url:canonical,
-    author:{'@type':'Person',name:cfg.author||'Yousaf'}
+    author:{'@type':'Person',name:cfg.author||'Yousaf',url:cfg.authorUrl||undefined}
   };
-  document.getElementById('structuredData').textContent=JSON.stringify(data);
+  if(!p&&route==='home'){data.publisher={'@type':'Organization',name:siteName,url:canonical};data.potentialAction={'@type':'SearchAction',target:canonical+'?q={search_term_string}', 'query-input':'required name=search_term_string'};}document.getElementById('structuredData').textContent=JSON.stringify(data);
 }
 
 function render(){const postId=new URLSearchParams(location.search).get('post');const hash=location.hash.slice(1)||(postId?'article/'+postId:'home');let html=hash.startsWith('article/')?article(hash.split('/')[1]):hash==='articles'?articles():hash==='saved'?savedArticles():hash==='about'?about():hash==='contact'?contact():home();app.innerHTML=html;document.querySelectorAll('[data-route]').forEach(a=>a.classList.toggle('active',a.dataset.route===hash));window.scrollTo(0,0);document.querySelectorAll('.reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('show'),50+i*45));document.getElementById('mobileMenu').classList.remove('open');const currentPost=new URLSearchParams(location.search).get('post');applySeo(hash,currentPost?posts.find(x=>x.id===currentPost):null);initArticleFilters();initArticleShare();initBookmark();updateReading();}
