@@ -1,0 +1,17 @@
+{
+  "name": "Yousaf Journal",
+  "short_name": "Yousaf Journal",
+  "description": "Ideas Worth Reading — thoughtful long-form writing and stories.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7f2f5",
+  "theme_color": "#24151f",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
